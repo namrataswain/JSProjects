@@ -1,7 +1,5 @@
 "use strict";
 
-let dice = 0;
-
 let player = 0;
 let nacplayer = -1;
 let totalScoreOfPlayer0 = 0;
@@ -36,7 +34,7 @@ const reset = function () {
 };
 
 document.querySelector(".btn--roll").addEventListener("click", function () {
-  dice = Math.trunc(Math.random() * 6) + 1;
+  const dice = Math.trunc(Math.random() * 6) + 1;
   document.querySelector("img").src = `dice-${dice}.png`;
   if (dice === 1) {
     document.querySelector(`#current--${player}`).textContent = 0;
@@ -45,7 +43,6 @@ document.querySelector(".btn--roll").addEventListener("click", function () {
     nacplayer = player === 0 ? 1 : 0;
 
     toggleActivePlayer(player, nacplayer);
-    console.log(player);
   } else {
     player === 0 ? (currScoreOfPlayer0 += dice) : (currScoreOfPlayer1 += dice);
     if (player === 0) {
@@ -54,8 +51,6 @@ document.querySelector(".btn--roll").addEventListener("click", function () {
       document.querySelector("#current--1").textContent = currScoreOfPlayer1;
     }
   }
-
-  console.log(currScoreOfPlayer0, currScoreOfPlayer1);
 });
 
 document.querySelector(".btn--new").addEventListener("click", reset);
